@@ -1,171 +1,84 @@
 # Project 2 - Ames Housing Data and Kaggle Challenge
 
-Welcome to Project 2! Let's model!
-
-**Primary Learning Objectives:**
-1. Creating and iteratively refining a regression model.
-2. Using [Kaggle](https://www.kaggle.com/) to practice the modeling process.
-3. Providing business insights through reporting and presentation.
-
-You are tasked with creating a machine learning model based on the Ames Housing Dataset. This model will predict the price of a property at sale.
-
-The Ames Housing Dataset is contains over 70 columns of different features relating to houses.
-
----
-## Deliverables
-
-- We are hosting a competition on Kaggle to give you the opportunity to practice your modeling skills. You must upload at least one of your model's predictions to the competition.
-- You will submit a technical report and a presentation in your submission Repo.
-- You will present your findings to your classmates and instructors.
-
-**You will likely find that the best model for Kaggle is NOT the best model to address your data science problem.**
-
-
-## Set up
-
-Before you begin working on this project, please do the following:
-
-1. Sign up for an account on [Kaggle](https://www.kaggle.com/)
-2. **IMPORTANT**: Click this link: [Regression Challenge Sign Up](https://www.kaggle.com/t/2b7ece11c3894151818a4c768a5d9f16) to **join** the competition (otherwise you will not be able to make submissions!)
-3. Review the material on the [Kaggle challenge site](https://www.kaggle.com/competitions/1031-ames-competition/overview).
-4. Review the [data description](http://jse.amstat.org/v19n3/decock/DataDocumentation.txt).
-
-## The Modeling Process
-
-1. The train dataset has all of the columns that you will need to generate and refine your models. The test dataset has all of those columns except for the target that you are trying to predict in your regression model.
-2. Generate your regression model using the training data. We expect that within this process, you'll be making use of:
-    - train-test split
-    - cross-validation / grid searching for hyperparameters
-    - exploratory data analysis to find relationships
-    - code that reproducibly and consistently applies feature transformations
-We suggest starting your modeling with a few numeric columns that are highly correlated with the target.
-3. Predict the values for your target column in the test dataset and submit your predictions to Kaggle to see how your model does against unseen data.
-    - **Note**: Kaggle expects to see your submissions in a specific format. Check the challenge's page to make sure you are formatting your CSVs correctly!
-    - **You are limited to models you've learned in class**. In other words, you cannot use XGBoost, Neural Networks or any other model we haven't seen in class for this project.
-4. Evaluate your models!
-    - consider your evaluation metrics
-    - consider your baseline score
-    - how can your model be used for inference?
-    - why do you believe your model will generalize to new data?
-
-## Submission
-
-- Presentation slides must by pushed to your submission repo by the start of presentations.
-- Your technical report must be submitted in your submission repository by 9:00 AM Pacific on 12/9/22.
-- You must have at least one non-null model submission to Kaggle by 9:00 AM Pacific on the due date.
-
-Your technical report must include:
-
-- A README.md (that isn't this file)
-- Jupyter notebook(s) with your analysis and models (renamed to describe your project)
-- Data files
-- Presentation slides
-- Any other necessary files (images, etc.)
-
-
----
-
-## Presentation Structure
-
-- **Must be within time limit established by your instructor.**
-- Use Google Slides or some other presentation system (Keynote, Powerpoint, etc).
-- Consider your audience.
-- Start with the **problem** you are solving.
-- Use visuals that are appropriately scaled and interpretable.
-- Talk about your procedure/methodology (high level).
-- Talk about your primary findings.
-- Make sure you provide **clear recommendations** that follow logically from your analyses and narrative and answer your data science problem.
-
-Be sure to rehearse and time your presentation before class.
-
----
-
-## Rubric
-Your local instructor will evaluate your project (for the most part) using the following criteria.  You should make sure that you consider and/or follow most if not all of the considerations/recommendations outlined below **while** working through your project.
-
-**Scores will be out of 27 points based on the 9 items in the rubric.** <br>
-*3 points per section*<br>
-
-| Score | Interpretation                                                                                                                  |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------- |
-| **0** | *Project fails to meet the minimum requirements for this item.*                                                                 |
-| **1** | *Project meets the minimum requirements for this item, but falls significantly short of portfolio-ready expectations.*          |
-| **2** | *Project exceeds the minimum requirements for this item, but falls short of portfolio-ready expectations.*                      |
-| **3** | *Project meets or exceeds portfolio-ready expectations; demonstrates a thorough understanding of every outlined consideration.* |
-
-### The Data Science Process
-
 **Problem Statement**
-- Is it clear?
-- Is it reasonable?
-- Is the audience clearly identified?
+I represent a research team at [Zillow Group](https://career.zillowgroup.com/careers).  We are trying to develop a tool to determine the sale price of on-the-market homes in different urban centers in America.  We want to share this tool with our customers, and we want it to be specific enough and precise enough that we can offer it to them at a premium subscription price.  Our customers will benefit from having an accurate Real Estate Calculator because they can then know how to price their homes (as sellers) or what bids to offer (as buyers).  
 
-**Data Cleaning and EDA**
-- Are missing values dealt with?
-- Are important distributions examined and described?
-- Are outliers identified and addressed?
-- Are appropriate summary statistics provided?
-- Are possible modeling insights to investigate discussed?
+From experience, we know that understanding the behavior of the national real-estate market is not specific enough and is difficult to model.  So for this project, we are going to focus on the urban center of Ames, Iowa.  We reached out to the Assessor's office, and they kindly shared their asset-evaluation [data](http://jse.amstat.org/v19n3/decock/DataDocumentation.txt).  We will use this data to build a model to predict the price of a new home sale.
 
-**Preprocessing and Modeling**
-- Are categorical variables one-hot encoded or encoded in another logical way?
-- Are features engineered?
-- Have the data been scaled appropriately?
-- Does the student properly split the data for validation/training purposes?
-- Does the student use feature selection to remove noisy or multi-collinear features?
-- Does the student test and evaluate a variety of model types (**AT MINIMUM:** linear regression, lasso, and ridge)?
-- Does the student defend their choice of the best model for this data and problem statement?
-- Does the student explain how the model works and evaluate its performance successes/downfalls?
+We also want to identify which features impact the price (higher coefficients in the linear model) the most?  Are there any features which have a negative impact?
 
-**Evaluation and Conceptual Understanding**
-- Does the student accurately identify and explain the baseline score?
-- Does the student select and use metrics relevant to the problem statement?
-- Is more than one metric uses to better assess performance?
-- Does the student correctly interpret the results of their model for purposes of inference?
 
-**Conclusion and Recommendations**
-- Are the conclusions/recommendations clearly stated?
-- Does the conclusion answer the original problem statement?
-- Is it clear how the final recommendations were reached? Do they follow logically?
-- Does the student address how their suggestions will likely benefit stakeholders?
-- Are future steps to move the project forward identified?
+## Dataset Manipulation
 
-### Organization and Professionalism
+1. Imputation
+2. Feature Engineering
+3. Ordinal Encoding
+4. One Hot Encoding
+5. Standard Scaling
 
-**Project Organization**
-- Are modules imported correctly (using appropriate aliases)?
-- Are data imported/saved using relative paths (so someone can replicate your analysis)?
-- Does the README provide a good executive summary of the project?
-- Is Markdown formatting and comments used appropriately to communicate in the notebooks?
-- Are files & directories organized?
-- Are unnecessary files included?
-- Do files and directories have well-structured, appropriate, consistent names?
+## Modeling
 
-**Visualizations**
-- Are sufficient helpful visualizations provided?
-- Are plots labeled properly?
-- Are plots interpreted appropriately?
-- Are plots formatted and scaled appropriately for inclusion in a notebook-based technical report?
+#### Metrics for evaluation
 
-**Python Syntax and Control Flow**
-- Is care taken to write human readable code?
-- Is the code syntactically correct (no runtime errors)?
-- Does the code generate desired results (logically correct)?
-- Does the code follow general best practices?
+I will be returning the $R^2$ and $RMSE$ values for each model I generate.  
 
-**Presentation**
-- Is the problem statement clearly presented?
-- Does the body of the presentation building address the problem statement and lead to the conclusion?
-- Is the conclusion/recommendations clearly stated?
-- Is the level of technicality appropriate for the intended audience?
-- Does the student deliver their message clearly?
-- Are appropriate visualizations generated for the intended audience?
-- Are visualizations useful for supporting conclusions/explaining findings?
+The default .score() for most of the LinearRegression models is $R^2$ and it's an easier metric to interpret: $X\%$ of the variance in the model can be explained by these features.
 
-In order to pass the project, students must earn a minimum score of 1 for each category.
-- Earning below a 1 in one or more of the above categories would result in a failing project.
-- While a minimum of 1 in each category is the required threshold for graduation, students should aim to earn at least an average of 1.5 across each category. An average score below 1.5, while it may be passing, means students may want to solicit specific feedback in order to significantly improve the project before showcasing it as part of a portfolio or the job search.
+$RMSE$ is the metric on Kaggle, so if I track my RMSE's as well, I can check for variance between scoring my training set and the unseen test set.
 
-### REMEMBER:
+#### Comparing all the scores
 
-This is a learning environment and you are encouraged to try new things, even if they don't work out as well as you planned! While this rubric outlines what we look for in a _good_ project, it is up to you to go above and beyond to create a _great_ project. **Learn from your failures and you'll grow!**
+|model|cross_val $R^2$|train $R^2$|val $R^2$|train RMSE (\$)|val RMSE (\$)|
+| --- | --- | --- | --- | --- | --- |
+baseline|NaN|NaN|-0.006|80726.0|73049.0
+LinReg_final_features|-6.957780e+22|0.927|0.756|21831.0|35992.0
+Ridge_final_features|0.864|0.900|0.811|25533.0|31643.0
+**Lasso_final_features**|**0.854**|**0.895**|**0.822**|**26212.0**|**30691.0**
+ElasticNet_final_features|0.865|0.901|0.811|25361.0|31703.0
+
+The Lasso Regularization for my final set of features has the best balance of a high score and the lowest variance, but unfortunately the variance is still pretty high.  When I submitted my predictions to Kaggle, I got an RMSE of $29468.95$ which is a slightly better performance than the validation set, but not by much.  
+
+
+#### Testing Linear Assumptions
+
+-[x] Linearity
+-[x] Independence of errors
+-[x] Normality
+-[x] Equality of variance (homoscedasticity)
+-[] No Multicollinearity (Indepedendence of predictors)
+
+
+## Conclusions and Recommendations
+Based on the metrics I chose for evaluation, the Lasso Regularization for my final set of features had the best results.  After submitting my predictions to Kaggle, I received an RMSE score of $29468.95$.  This is worse than my training RMSE score of $26212.0$, but the variance between them is minimized.  All my models scored much better than the baseline at an RMSE of $80726.0$. Therefore I can intuit that my thought process for building a LinearRegression model to predict Housing prices was logical.
+
+The model is still overfitting to the training data, which is likely due to having so many features.  Even though Lasso regularized the features to reduce them from 183 to 54, that looks like it is still too many.
+
+I also saw that there was a lot of multicollinearity left in my 183 features.  We could tinker with the model further by removing the worst offenders one by one and seeing how our score improves or not.
+
+#### Understanding the Coefficients
+
+\graphicspath{ {images/coefficients.png} }
+
+This is a great way to visualize the coefficients.  By themselves, the coefficients are a bit difficult to interpret because our features were standard scaled at the end.  So increasing the `gr_liv_area` by 1 square foot does *not* increase the price by \$21,000.  However, on this graph we can see which features have the biggest impact.  It's also sorted by absolute value first, so the two negative coefficients have a strong negative impact on price.
+
+* Of the top 5, `gr_liv_area` has more than 3x the impact of `exter_qual`.  
+
+* If you refer back to our correlation matrix in the EDA, the 5 numeric features with the highest correlation were `overall_qual`, `gr_liv_area`, `total_bsmt_sf`, `garage_area`, `garage_cars`.  Those initial predictions do sort of line up with what we see here.  They are all in the Top 20 shown in the graph above (except for `garage_cars` which we dropped due to pairwise correlation).
+
+* The 'quality' features are strong indicators.  `overall_qual`, `exter_qual`, `kitchen_qual`, and `bsmt_qual` all show up.  This shows that qualitative information about the home can be just as useful to the buyers as quantitative measurements of area or number of fireplaces.
+
+* We also see quite a few of the encoded nominal features in this graph.  Three neighborhoods show up \['Northridge Heights', Stone Brook, 'Northridge']. Cross-referencing [information](https://www.neighborhoodscout.com/ia/ames) about Ames neighborhoods does indicate that they are three of the richest neighborhoods in Ames.
+
+**What do our negative coefficients mean?**
+
+* Once we understand our positive coefficients, we can understand that the negative coefficients indicate the opposite.  A home that exists as an end or inside unit of a townhouse will reduce the price, holding all else constant.  
+
+#### Recommendations
+
+* We first recommend iterating and developing this model a bit further to see if we can get a more accurate predictor, especially with less variance. As it stands, we cannot currently recommend offering this as a subscription-based service, because it will not provide enough value to the customer yet. And it is not worth the time investment on our part if we cannot monetize it.
+* As a short-term solution, we could build the model if we put caps on the price at either end.  This model does a decent job of predicting prices closer to the median, but the errors get bigger as we look at homes that are potentially either very expensive or very cheap.  Our model tends to underestimate very expensive homes, which could cause issues for a seller who loses money because they assess their home to a lower value than the true.
+
+* We can make the following recommendations to a seller who wants to increase the value of their home before putting it on the market:
+    * The total square feet of above-ground living area (sleeping/working/living) has the biggest impact on a home price.  If you have any areas in your home that are unfinished but have the potential to be livable (like an extra storage-only room for example), invest money in remodeling and making those spaces livable or usable beyond storage.
+    * Overall quality of the finish and material of the house is another big indicator.  For example, if you have old-fashioned wood siding outside your home, consider getting it replaced by the more modern stucco siding.
+    * Townhouses are some of the strongest *negative* indicators of price.  If you are unfortunately trying to sell a townhouse, definitely make sure to invest money where you can to increase the above-ground living area or improve the overall quality.  That effort will be necessary to get a good price on your sale.
