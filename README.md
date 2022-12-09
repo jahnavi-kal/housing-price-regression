@@ -41,11 +41,11 @@ The Lasso Regularization for my final set of features has the best balance of a 
 
 #### Testing Linear Assumptions
 
--[x] Linearity
--[x] Independence of errors
--[x] Normality
--[x] Equality of variance (homoscedasticity)
--[] No Multicollinearity (Indepedendence of predictors)
+- [x] Linearity
+- [x] Independence of errors
+- [x] Normality
+- [x] Equality of variance (homoscedasticity)
+- [ ] No Multicollinearity (Indepedendence of predictors)
 
 
 ## Conclusions and Recommendations
@@ -57,7 +57,7 @@ I also saw that there was a lot of multicollinearity left in my 183 features.  W
 
 #### Understanding the Coefficients
 
-\graphicspath{ {images/coefficients.png} }
+![Most Impactful Coefficients](images/coefficients.png)
 
 This is a great way to visualize the coefficients.  By themselves, the coefficients are a bit difficult to interpret because our features were standard scaled at the end.  So increasing the `gr_liv_area` by 1 square foot does *not* increase the price by \$21,000.  However, on this graph we can see which features have the biggest impact.  It's also sorted by absolute value first, so the two negative coefficients have a strong negative impact on price.
 
